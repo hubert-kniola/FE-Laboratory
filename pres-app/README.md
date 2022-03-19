@@ -1,15 +1,15 @@
-# To start JEST testing
+##### To start JEST testing
 
-### `jest name-of-test --notify --config=config.json`
+##### `jest name-of-test --notify --config=config.json`
 
-# Generate configuration file
+##### Generate configuration file
 
-### `jest --init`
+##### `jest --init`
 
-# To run JEST test
+##### To run JEST test
 
-### `npm run test`
+##### `npm run test`
 
-# Open CYPRESS
+##### Open CYPRESS
 
-### `npx cypress open` `npm run cypress:open`
+##### `npx cypress open` `npm run cypress:open`
