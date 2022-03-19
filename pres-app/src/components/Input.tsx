@@ -11,7 +11,7 @@ export const Input: FC<InputProps> = ({ type, text, onChange }) => {
     <div className="Input">
       <label>{text}</label>
       <br />
-      <input type={type} onChange={onChange}></input>
+      <input className="Input__input" type={type} onChange={onChange}></input>
     </div>
   );
 };
