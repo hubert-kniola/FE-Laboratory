@@ -1,0 +1,88 @@
+body {
+  background-color: rgb(0, 235, 176);
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Form {
+  padding-top: 12rem;
+  padding-left: auto;
+  padding-right: auto;
+  text-align: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.Button {
+  margin-top: 20%;
+  background-color: aqua;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 25px;
+  height: fit-content;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
+  outline: none;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+}
+
+.Button p {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.Button:hover {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: rgb(0, 255, 200);
+  box-shadow: 0px 15px 20px rgba(255, 255, 255, 0.4);
+  transform: translateY(-7px);
+}
+
+.Input {
+  padding-top: 1rem;
+}
+
+.Input label {
+  outline: none;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.Input input {
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  background-color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+  height: 2rem;
+  width: fit-content;
+  border-radius: 25px;
+  color: rgb(0, 202, 158);
+  font-weight: 700;
+}
+
+.Comm {
+  margin-top: 2rem;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: x-large;
+}
