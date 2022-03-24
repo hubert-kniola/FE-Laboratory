@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap");
+
+tr:nth-child(even) {
+  /*class="bg-gray-50";*/
+  background-color: rgb(17 24 39);;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
