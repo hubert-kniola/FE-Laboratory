@@ -5,6 +5,29 @@ tr:nth-child(even) {
   background-color: rgb(17 24 39);;
 }
 
+div.all { 
+  position:relative;
+}
+div.top {
+  width: 0;
+  background-color: transparent;
+  border-top: 80px solid transparent;
+  border-right: 200px solid transparent;
+}
+div.mid {
+  position:absolute;
+  top:0;
+  right:0;
+}
+div.bot {
+  position:absolute;
+  bottom:0;
+  left:0;
+}
+div.mid, div.bot { 
+  padding:5px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
