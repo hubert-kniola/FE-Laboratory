@@ -1,0 +1,18 @@
+http://localhost:4000/api/todos/
+
+###
+
+
+POST http://localhost:4000/api/todos HTTP/1.1
+content-type: application/json
+
+{
+	"text" : "Zrobic cos jeszcze"
+}
+
+###
+
+
+DELETE http://localhost:4000/api/todos/5fcb6e3ed68fee39a42be96e HTTP/1.1
+
+
