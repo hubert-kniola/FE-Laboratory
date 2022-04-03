@@ -2,7 +2,11 @@
 
 tr:nth-child(even) {
   /*class="bg-gray-50";*/
-  background-color: rgb(17 24 39);;
+  background-color: #BAE6FD;
+}
+
+thead td {
+  border-left: 0px solid;
 }
 
 .word{
@@ -37,27 +41,44 @@ body{
   font-family: roboto;
 }
 
+.diagonalcross {
+  background: linear-gradient(to top right, #E0F2FE calc(50% - 1px), black , #E0F2FE calc(50% + 1px) );
+}
+
 div.all { 
   position:relative;
+  width: 100%;
 }
 div.top {
-  width: 0;
-  background-color: transparent;
-  border-top: 80px solid transparent;
-  border-right: 200px solid transparent;
+  border-color: black;
+  border-top: 7rem solid transparent;
+  border-right: 5rem solid transparent;
 }
+
+@media print {
+  html, body {
+    display: none;  /* hide whole page */
+  }
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 div.mid {
   position:absolute;
   top:0;
   right:0;
 }
+
 div.bot {
   position:absolute;
   bottom:0;
   left:0;
-}
-div.mid, div.bot { 
-  padding:5px;
+  margin-bottom: 0;
 }
 
 @tailwind base;
