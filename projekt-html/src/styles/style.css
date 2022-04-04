@@ -9,12 +9,16 @@ thead td {
   border-left: 0px solid;
 }
 
+.underline-width{
+  text-decoration: underline solid 0.1rem;
+}
+
 .word{
   color:white;
 }
 
 .word:before {
-  color: rgb(37 99 235);
+  color: #009de2;
   content: "AIR";
 }
 
@@ -26,6 +30,10 @@ thead td {
 .trends:after{
   content: "TRENDS";
   font-weight: 800;
+}
+
+.polygon{
+  clip-path: polygon(0 0, 63% 0, 57% 100%, 0% 100%);
 }
 
 .challenges:after{
