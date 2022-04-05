@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AIRPASSENGER</title>
     <link rel="stylesheet" href="../dist/style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
   <body>
     <header class="text-gray-700 bg-white body-font print">
@@ -291,10 +293,10 @@
         </div>
         <div class="flex flex-wrap -m-4">
           <div class="xl:w-1/4 md:w-1/2 p-4">
-            <div class="bg-zinc-300 bg-opacity-40">
+            <div data-aos="zoom-in" class="bg-zinc-300 bg-opacity-40">
               <img
                 class="h-60 w-full object-cover object-center mb-6"
-                src="https://dummyimage.com/730x410"
+                src="./../dist/images/plane1.jpg"
                 alt="content"
               />
               <div class="text-left px-5">
@@ -336,10 +338,10 @@
             </div>
           </div>
           <div class="xl:w-1/4 md:w-1/2 p-4">
-            <div class="bg-zinc-300 bg-opacity-40">
+            <div data-aos="zoom-in" class="bg-zinc-300 bg-opacity-40">
               <img
                 class="h-60 w-full object-cover object-center mb-6"
-                src="https://dummyimage.com/721x401"
+                src="./../dist/images/plane1.jpg"
                 alt="content"
               />
               <div class="text-left px-5">
@@ -381,10 +383,10 @@
             </div>
           </div>
           <div class="xl:w-1/4 md:w-1/2 p-4">
-            <div class="bg-zinc-300 bg-opacity-40">
+            <div data-aos="zoom-in" class="bg-zinc-300 bg-opacity-40">
               <img
                 class="h-60 w-full object-cover object-center mb-6"
-                src="https://dummyimage.com/722x402"
+                src="./../dist/images/plane1.jpg"
                 alt="content"
               />
               <div class="text-left px-5">
@@ -426,10 +428,10 @@
             </div>
           </div>
           <div class="xl:w-1/4 md:w-1/2 p-4">
-            <div class="bg-zinc-300 bg-opacity-40">
+            <div data-aos="zoom-in" class="bg-zinc-300 bg-opacity-40">
               <img
                 class="h-60 w-full object-cover object-center mb-6"
-                src="https://dummyimage.com/723x403"
+                src="./../dist/images/plane1.jpg"
                 alt="content"
               />
               <div class="text-left px-5">
@@ -519,15 +521,15 @@
         </div>
       </div>
     </section>
-    <section class="text-gray-600 bg-white body-font relative">
-      <div class="bg-[url('https://dummyimage.com/720x200')] bg-cover bg-w-full m-5 ">
+    <section class="text-gray-800 bg-white body-font relative">
+      <div data-aos="fade-right" class="bg-plane5 bg-center bg-cover bg-w-full m-5 ">
         <div class="w-full flex justify-center">
           <div class="w-5 h-3 bg-logoBlue-500"></div>
           <div class="w-5 h-3 bg-gray-600"></div>
         </div>
         <div class="lg:w-full w-full mb-6 lg:mb-0 container justify-center mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
         <h1
-          class="flex sm:text-3xl text-2xl font-medium title-font text-gray-600 trends border-b-[3px] border-gray-600 pb-1 pt-2 align-center text-center"
+          class="flex sm:text-3xl text-2xl font-medium title-font trends border-b-[3px] border-gray-800 pb-1 pt-2 align-center text-center"
         >
           AIR
         </h1>
@@ -537,7 +539,7 @@
           class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col mb-16 md:mb-0 justify-center"
         >
           <h1
-            class="title-font sm:text-2xl text-3xl mb-4 font-medium text-gray-600"
+            class="title-font sm:text-2xl text-3xl mb-4 font-mediu"
           >
             Lorem, ipsum dolor sit amet consectetur adipisicing elit
           </h1>
@@ -612,25 +614,25 @@
         </div>
       </div>
     </section>
-    <section class="text-gray-600 bg-white body-font relative">
-      <div class="bg-[url('https://dummyimage.com/720x200')] polygon bg-cover bg-h-full bg-w-full m-5">
+    <section class="text-gray-800 bg-white body-font">
+      <div data-aos="fade-right" class="relative bg-plane4 polygon bg-center bg-cover bg-h-full bg-w-full m-5 min-h-1/4">
         <div class="w-full flex justify-center">
           <div class="w-5 h-3 bg-logoBlue-500"></div>
           <div class="w-5 h-3 bg-gray-600"></div>
         </div>
         <div class="lg:w-full w-full mb-6 lg:mb-0 container justify-center mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
-        <h1 class="flex sm:text-3xl text-2xl font-medium title-font text-gray-600 challenges border-b-[3px] border-gray-600 pb-1 pt-2 justify-center align-center text-center">
+        <h1 class="flex sm:text-3xl text-2xl font-medium title-font text-white challenges border-b-[3px] border-white pb-1 pt-2 justify-center align-center text-center">
           AIR
         </h1>
-      </div>
+        </div>
       <div
-        class="container md:ml-0 md:w-1/4 w-1/2 flex pt-5 pb-4 md:flex-row flex-col items-center"
+        class="container md:w-1/4 z-40 w-1/2 flex pt-5 pb-4 md:flex-row flex-col"
       >
       <div
-      class="lg:flex-grow md:w-1/2 lg:pr-4 md:pr-6 flex flex-col mb-16 md:mb-0 justify-center"
+      class="lg:flex-grow md:w-1/2 lg:pr-4 md:pr-6 flex flex-col mb-16 md:mb-0"
     >
       <h1
-        class="title-font sm:text-2xl text-3xl mb-4 font-medium text-gray-600"
+        class="title-font sm:text-2xl text-3xl mb-4 font-medium"
       >
         Lorem, ipsum dolor sit amet consectetur adipisicing elit
       </h1>
@@ -1243,5 +1245,8 @@
         </nav>
       </div>
     </footer>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

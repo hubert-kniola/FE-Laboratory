@@ -22,6 +22,24 @@ thead td {
   content: "AIR";
 }
 
+.ad-line {
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+@keyframes run {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0;    
+  }
+}
+
 .news:after{
   content: "NEWS";
   font-weight: 800;
