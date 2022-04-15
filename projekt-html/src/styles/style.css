@@ -71,7 +71,7 @@ thead td {
 }
 
 .challenges:after{
-  content: "CHALLENGES";
+  content: "TCHALLENGES";
   font-weight: 800;
 }
 
