@@ -51,7 +51,7 @@ thead td {
 }
 
 .polygon{
-  clip-path: polygon(0 0, 63% 0, 57% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%);
 }
 
 .gray-back{
