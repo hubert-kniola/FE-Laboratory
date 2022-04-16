@@ -1,0 +1,23 @@
+.word {
+  color: white;
+}
+
+.word:before {
+  color: #009de2;
+  content: "AIR";
+}
+
+.news:after {
+  content: "NEWS";
+  font-weight: 800;
+}
+
+.trends:after {
+  content: "TRENDS";
+  font-weight: 800;
+}
+
+.challenges:after {
+  content: "TCHALLENGES";
+  font-weight: 800;
+}

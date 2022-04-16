@@ -1,0 +1,9 @@
+
+.h2-tile {
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  font-weight: 700;
+  margin-bottom: 1rem /* 16px */;
+  text-decoration-line: underline;
+  text-underline-offset: 8px;
+}

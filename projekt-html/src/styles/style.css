@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,26 +12,8 @@
 @import "./custom-utilities.css";
 
 
-tr:nth-child(even) {
-  /*class="bg-gray-50";*/
-  background-color: #BAE6FD;
-}
-
-thead td {
-  border-left: 0px solid;
-}
-
-.underline-width{
+.underline-width {
   text-decoration: underline solid 0.1rem;
-}
-
-.word{
-  color:white;
-}
-
-.word:before {
-  color: #009de2;
-  content: "AIR";
 }
 
 .ad-line {
@@ -48,81 +30,105 @@ thead td {
     left: 100%;
   }
   100% {
-    left: 0;    
+    left: 0;
   }
 }
 
-.news:after{
+.polygon {
+  clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%);
+}
+
+.gray-back {
+  position: relative;
+  z-index: 1;
+}
+
+.word {
+  color: white;
+}
+
+tr:nth-child(even) {
+  /*class="bg-gray-50";*/
+  background-color: #bae6fd;
+}
+
+thead td {
+  border-left: 0px solid;
+}
+
+tbody tr {
+  border-width: 1px;
+  border-color: rgb(71 85 105 / 1);
+}
+
+th {
+  border-width: 1px;
+  border-color: rgb(71 85 105 / 1);
+}
+
+td {
+  border-width: 1px;
+  border-color: rgb(71 85 105 / 1);
+}
+
+
+.word:before {
+  color: #009de2;
+  content: "AIR";
+}
+
+.news:after {
   content: "NEWS";
   font-weight: 800;
 }
 
-.trends:after{
+.trends:after {
   content: "TRENDS";
   font-weight: 800;
 }
 
-.polygon{
-  clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%);
+.challenges:after {
+  content: "TCHALLENGES";
+  font-weight: 800;
 }
 
-.gray-back{
-  position:relative;
-  z-index:1;
-}
-
-tbody tr{
-  border-width: 1px;
-  border-color: rgb(71 85 105 / 1);
-}
-
-th{
-  border-width: 1px;
-  border-color: rgb(71 85 105 / 1);
-}
-
-td{
-  border-width: 1px;
-  border-color: rgb(71 85 105 / 1);
-}
-
-.icon{
+.icon {
   height: 2rem;
   width: 2rem;
   margin-left: 1.25rem;
   margin-right: 1.25rem;
 }
 
-.gray-back:before{
-  position:absolute;
-  z-index:-1;
-  top:0;
-  left:0;
-  width:100%;
-  height:80%;
-  content:"";
+.gray-back:before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  content: "";
   background-color: rgb(243 244 246);
 }
 
-.challenges:after{
-  content: "TCHALLENGES";
-  font-weight: 800;
-}
-
-.mirror{
+.mirror {
   transform: scaleX(-1);
 }
 
-body{
+body {
   font-family: roboto;
 }
 
 .diagonalcross {
-  background: linear-gradient(to top right, #E0F2FE calc(50% - 1px), black , #E0F2FE calc(50% + 1px) );
+  background: linear-gradient(
+    to top right,
+    #e0f2fe calc(50% - 1px),
+    black,
+    #e0f2fe calc(50% + 1px)
+  );
 }
 
-div.all { 
-  position:relative;
+div.all {
+  position: relative;
   width: 100%;
 }
 div.top {
@@ -132,8 +138,9 @@ div.top {
 }
 
 @media print {
-  html, body {
-    display: none;  /* hide whole page */
+  html,
+  body {
+    display: none; /* hide whole page */
   }
 }
 
@@ -145,14 +152,14 @@ div.top {
 }
 
 div.mid {
-  position:absolute;
-  top:0;
-  right:0;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 div.bot {
-  position:absolute;
-  bottom:0;
-  left:0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   margin-bottom: 0;
 }
