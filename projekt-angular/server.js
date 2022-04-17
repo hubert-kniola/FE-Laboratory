@@ -55,10 +55,12 @@ app.get("/api/todos/:todo_id", function (req, res) {
     function (err, todos) {
       // if there is an error retrieving, send the error. nothing after res.send(err) will execute
       if (err) res.send(err);
-
-      res.json(todos); // return all todos in JSON format
-    }
-  );
+      
+      if(todos)
+        res.status(200).json(todos); // return all todos in JSON format
+      else
+        res.status(504)
+    });
 });
 
 // create todo and send back all todos after creation
@@ -81,14 +83,14 @@ app.post("/api/todos", function (req, res) {
   );
 });
 
-// app.put("/api/todos", function (req, res) {});
-app.patch("/api/todos/:todo_id", function (req, res) {
+// app.patch("/api/todos", function (req, res) {});
+app.patch("/api/todos/:todo_id", function (req, res) { 
   Todo.findByIdAndUpdate(
     req.params.todo_id,
     {
-      done: !res.params.done,
+      done: req.body.done,
     },
-    function (err, todo) {
+    function (err) {
       if (err) res.send(err);
 
       // get and return all the todos after you update another
@@ -114,6 +116,67 @@ app.delete("/api/todos/:todo_id", function (req, res) {
         if (err) res.send(err);
         res.json(todos);
       });
+    }
+  );
+});
+
+app.get("/api/done", function (req, res) {
+  // use mongoose to get all todos in the database
+  Todo.find(
+    {
+      done: true,
+    },
+    function (err, todos) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err) res.send(err);
+
+      if(todos)
+        res.status(200).json(todos); // return all todos in JSON format
+      else
+        res.status(504) // return all todos in JSON format
+    }
+  );
+});
+
+app.patch("/api/todo/:todo_id", function (req, res) { 
+  Todo.findByIdAndUpdate(
+    req.params.todo_id,
+    {
+      done: req.body.done,
+    },
+    function (err) {
+      if (err) res.send(err);
+
+      // get and return all the todos after you update another
+      Todo.find(
+        {
+          done: false,
+        },
+        function (err, todos) {
+          // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+          if (err) res.send(err);
+    
+          res.json(todos); // return all todos in JSON format
+        }
+      );
+    }
+  );
+});
+
+app.get("/api/todo", function (req, res) {
+  // use mongoose to get all todos in the database
+  Todo.find(
+    {
+      done: false,
+    },
+    function (err, todos) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err) res.send(err);
+
+      if(todos)
+        res.status(200).json(todos); // return all todos in JSON format
+      else
+        res.status(504) // return all todos in JSON format
     }
   );
 });

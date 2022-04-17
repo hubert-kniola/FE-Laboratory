@@ -2,6 +2,7 @@ var nodeTodo = angular.module("nodeTodo", []);
 
 function mainController($scope, $http) {
   $scope.formData = {};
+  $scope.error= "";
   $scope.todos = [];
 
   // when landing on the page, get all todos and show them
@@ -15,8 +16,12 @@ function mainController($scope, $http) {
     });
 
   // when submitting the add form, send the text to the node API
-  $scope.createTodo = function () {
-    $http
+  $scope.createTodos = function () {
+    var text = $scope.formData;
+    if(!angular.equals({}, text))
+    {
+      $scope.error = "";
+      $http
       .post("/api/todos", $scope.formData)
       .success(function (data) {
         document.getElementById("newTodo").value = "";
@@ -25,6 +30,11 @@ function mainController($scope, $http) {
       .error(function (data) {
         console.log("Error: " + data);
       });
+    }
+    else{
+      console.log("Error: " + "Text is empty!");
+      $scope.error = "Text is empty!";
+    }
   };
 
   $scope.getAll = function () {
@@ -40,7 +50,7 @@ function mainController($scope, $http) {
 
   $scope.getDone = function () {
     $http
-      .get("/api/todos/done")
+      .get("/api/done")
       .success(function (data) {
         $scope.todos = data;
       })
@@ -51,7 +61,7 @@ function mainController($scope, $http) {
 
   $scope.getTodo = function () {
     $http
-      .get("/api/todos/todo")
+      .get("/api/todo")
       .success(function (data) {
         $scope.todos = data;
       })
@@ -61,9 +71,15 @@ function mainController($scope, $http) {
   };
 
   // update a todo after checking it
-  $scope.updateTodo = function (id) {
-    $http
-      .patch("/api/todos/" + id)
+  $scope.updateTodos = function (id, done) {
+    $http({
+      method: "PATCH",
+      url: "/api/todos/" + id,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { done: done },
+    })
       .success(function (data) {
         $scope.todos = data;
       })
@@ -72,8 +88,30 @@ function mainController($scope, $http) {
       });
   };
 
+  $scope.updateTodo = function (id, done) {
+    $http({
+      method: "PATCH",
+      url: "/api/todo/" + id,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { done: done },
+    })
+      .success(function (data) {
+        $scope.todos = data;
+      })
+      .error(function (data) {
+        console.log("Error: " + data);
+      });
+  };
+
+  $scope.reset = function() {
+    $scope.formData = {};
+    $scope.formData.$setPristine();
+  }
+
   // delete a todo after checking it
-  $scope.deleteTodo = function (id) {
+  $scope.deleteTodos = function (id) {
     $http
       .delete("/api/todos/" + id)
       .success(function (data) {

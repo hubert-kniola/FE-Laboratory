@@ -1,0 +1,76 @@
+.nav-item a{
+    border: solid 1px rgb(231, 231, 231); 
+    border-radius: 5px;
+    outline: none;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    border-bottom: none;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: rgb(0, 160, 235);
+    font-weight: 500;
+}
+
+.nav-tabs .active a{
+    background-color: rgb(0, 160, 235);
+}
+
+.nav-item a:hover{
+    background-color: rgb(0, 160, 235);
+    border-radius: 5px;
+}
+
+.nav-item .active{
+    color: white;
+}
+
+.element-number{
+    background-color: #00a0eb;
+}
+
+.element{
+    padding-left: 1rem;
+}
+
+.text-input{
+    width: 40%;
+    border: solid 1px rgb(231, 231, 231); 
+    border-radius: 5px;
+    outline: none;
+    height: 5rem;
+}
+
+.text-input::placeholder{
+    color: rgb(180, 180, 180); 
+}
+
+.row{
+    margin-top: 7rem;
+}
+
+.tab-element{
+    background: rgb(241, 241, 241);; 
+    border: solid 1px rgb(231, 231, 231); 
+    border-radius: 5px;
+    padding: 1rem;
+    padding-left: 4rem;
+}
+
+.tab-element:hover{
+    background: rgb(247, 247, 247);; 
+}
+
+.icon{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-left: auto; 
+    margin-right: 0;
+    float: right;
+    margin-top: 0.3rem;
+}
+
+.icon:hover{
+    color:#00a0eb;
+}

@@ -1,84 +1,148 @@
-<!doctype html>
+<!DOCTYPE html>
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="nodeTodo">
-<head>
-        <!-- META -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+  <head>
+    <!-- META -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Optimize mobile viewport -->
 
-        <title>Node/Angular Todo App</title>
+    <title>ANGULAR TODO LIST</title>
 
-        <!-- SCROLLS -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        <!-- load bootstrap -->
-        <style>
-                html {
-                        overflow-y: scroll;
-                }
+    <!-- SCROLLS -->
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css"/>
+    <!-- load bootstrap -->
+    <style>
+      html {
+        overflow-y: scroll;
+      }
 
-                body {
-                        padding-top: 50px;
-                }
+      body {
+        padding-top: 50px;
+      }
 
-                #todo-list {
-                        margin-bottom: 30px;
-                }
+      #todo-list {
+        margin-bottom: 30px;
+      }
 
-                #todo-form {
-                        margin-bottom: 50px;
-                }
-        </style>
+      #todo-form {
+        margin-bottom: 50px;
+      }
+    </style>
 
-        <!-- SPELLS -->
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-        <!-- load angular -->
-        <script src="core.js"></script>
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <!-- load angular -->
+    <script src="core.js"></script>
 
-</head>
-<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
 
-<body ng-controller="mainController">
-        <div class="container">
+  <body ng-controller="mainController">
+    <div class="container">
+      <!-- HEADER AND TODO COUNT -->
+      <div class="text-left element">
+        <h1>
+          Elements
+          <span class="label element-number">{{ todos.length }}</span>
+        </h1>
+      </div>
 
-                <!-- HEADER AND TODO COUNT -->
-                <div class="jumbotron text-center">
-                        <h1>nodeTODO {{ cos }} <span class="label label-info">{{ todos.length }}</span></h1>
-                </div>
-
-                <!-- TODO LIST -->
-                <div id="todo-list" class="row">
-                        <div class="col-sm-4 col-sm-offset-4">
-
-                                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                                <div class="checkbox" ng-repeat="todo in todos">
-                                        <label>
-                                                <input type="checkbox" ng-click="deleteTodo(todo._id)"
-                                                       ng-model="todo.done">
-                                                {{ todo.text }}
-                                        </label>
-                                </div>
-
-                        </div>
-                </div>
-
-                <!-- FORM TO CREATE TODOS -->
-                <div id="todo-form" class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text-center">
-                                <form>
-                                        <div class="form-group">
-
-                                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                                                <input id="newTodo" type="text" class="form-control input-lg text-center"
-                                                       placeholder="co jeszcze chcesz zrobić?" ng-model="formData.text">
-                                        </div>
-
-                                        <!-- createToDo() WILL CREATE NEW TODOS -->
-                                        <button type="submit" class="btn btn-primary btn-lg"
-                                                ng-click="createTodo()">Dodaj</button>
-                                </form>
-                        </div>
-                </div>
+      
+      <ul class="nav nav-tabs">
+        <li class="active nav-item" ng-click="getAll()"><a href="#home">ALL</a></li>
+        <li class="nav-item" ng-click="getTodo()"><a href="#menu1">TODO</a></li>
+        <li class="nav-item" ng-click="getDone()"><a href="#menu2">DONE</a></li>
+      </ul>
+    
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+          <h4>All Elements of TODO List:</h4>
+            <div class="checkbox tab-element" ng-repeat="todo in todos">
+                <label>
+                  <input
+                    id="doneTodo"
+                    type="checkbox"
+                    ng-click="updateTodos(todo._id, todo.done);"
+                    ng-model="todo.done"
+                  />
+                  {{ todo.text }}
+                </label> 
+                <svg xmlns="http://www.w3.org/2000/svg" ng-click="deleteTodos(todo._id)" width="15" height="15" fill="currentColor" class="bi bi-trash icon" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+               </svg>        
+            </div> 
         </div>
-</body>
+        <div id="menu1" class="tab-pane fade">
+          <h4>Elements to do:</h4>
+          <div class="checkbox tab-element" ng-repeat="todo in todos">
+                <label>
+                  <input
+                    id="doneTodo"
+                    type="checkbox"
+                    ng-click="updateTodo(todo._id, todo.done);"
+                    ng-model="todo.done"
+                  />
+                  {{ todo.text }}
+                </label>       
+            </div> 
+        </div>
+        <div id="menu2" class="tab-pane fade">
+          <h4>Elements which are done:</h4>
+          <div class="checkbox tab-element" ng-repeat="todo in todos">
+                <label>
+                  {{ todo.text }}
+                </label>       
+            </div> 
+        </div>
+      </div>
+           
+      <script>
+        $(document).ready(function(){
+                $(".nav-tabs a").click(function(){
+                        $(this).tab('show');
+                });
+        });
+      </script>
 
+      <!-- FORM TO CREATE TODOS -->
+      <div id="todo-form" class="row" >
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+          <form>
+            <div class="form-group">
+              <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+              <input
+                id="newTodo"
+                type="text"
+                class="input-md text-center text-input"
+                placeholder="Get here your new list element!"
+                ng-model="formData.text"
+              />
+            </div>
+
+            <!-- createToDo() WILL CREATE NEW TODOS -->
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg"
+              ng-click="createTodos(); reset();"
+            >
+              Add
+            </button>
+          </form>
+          <div ng-if="error.length > 0">
+            <h4>
+              {{error}}
+            </h4> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
