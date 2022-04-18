@@ -43,10 +43,6 @@
   z-index: 1;
 }
 
-.word {
-  color: white;
-}
-
 tr:nth-child(even) {
   /*class="bg-gray-50";*/
   background-color: #bae6fd;
@@ -70,7 +66,6 @@ td {
   border-width: 1px;
   border-color: rgb(71 85 105 / 1);
 }
-
 
 .word:before {
   color: #009de2;
@@ -108,6 +103,10 @@ td {
   height: 80%;
   content: "";
   background-color: rgb(243 244 246);
+}
+
+.bg-plane3{
+  width: 80%;
 }
 
 .mirror {
