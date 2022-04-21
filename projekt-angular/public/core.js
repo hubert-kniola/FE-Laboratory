@@ -2,7 +2,7 @@ var nodeTodo = angular.module("nodeTodo", []);
 
 function mainController($scope, $http) {
   $scope.formData = {};
-  $scope.error= "";
+  $scope.error = "";
   $scope.todos = [];
 
   // when landing on the page, get all todos and show them
@@ -18,20 +18,18 @@ function mainController($scope, $http) {
   // when submitting the add form, send the text to the node API
   $scope.createTodos = function () {
     var text = $scope.formData;
-    if(!angular.equals({}, text))
-    {
+    if (!angular.equals({}, text)) {
       $scope.error = "";
       $http
-      .post("/api/todos", $scope.formData)
-      .success(function (data) {
-        document.getElementById("newTodo").value = "";
-        $scope.todos = data;
-      })
-      .error(function (data) {
-        console.log("Error: " + data);
-      });
-    }
-    else{
+        .post("/api/todos", $scope.formData)
+        .success(function (data) {
+          document.getElementById("newTodo").value = "";
+          $scope.todos = data;
+        })
+        .error(function (data) {
+          console.log("Error: " + data);
+        });
+    } else {
       console.log("Error: " + "Text is empty!");
       $scope.error = "Text is empty!";
     }
@@ -105,10 +103,27 @@ function mainController($scope, $http) {
       });
   };
 
-  $scope.reset = function() {
+  $scope.updateDone = function (id, done) {
+    $http({
+      method: "PATCH",
+      url: "/api/done/" + id,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { done: done },
+    })
+      .success(function (data) {
+        $scope.todos = data;
+      })
+      .error(function (data) {
+        console.log("Error: " + data);
+      });
+  };
+
+  $scope.reset = function () {
     $scope.formData = {};
     $scope.formData.$setPristine();
-  }
+  };
 
   // delete a todo after checking it
   $scope.deleteTodos = function (id) {

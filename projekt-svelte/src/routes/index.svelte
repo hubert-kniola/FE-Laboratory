@@ -1,57 +1,59 @@
-<script>
-	import LadnaRamka from '$lib/LadnaRamka.svelte';
-	import PostCard from '$lib/PostCard.svelte';
-	import { v4 as uuidv4 } from 'uuid';
-	import {onMount} from 'svelte';
-	
-	const url = "https://jsonplaceholder.typicode.com/posts";
-	let posts=[];
-	let title="";
-	let body="";
-
-	onMount(async() => {
-		await onGetPosts();
-	})
-
-	const onAddPosts = () => {
-		posts = [...posts, {id: uuidv4(), title, body}];
-		title="";
-		body="";
-	}
-
-	const onGetPosts = async () => {
-		const res = await fetch(url);
-		if(res.ok) {
-			posts=await res.json();
-		}else{
-			console.log('Fetch error!');
-		}
-	}
-
-	const onRemovePost = (event) => {
-		const id = event.detail;
-		posts= posts.filter(item => item.id != id);
-	}
+<script context="module">
+	export const prerender = true;
 </script>
 
-<h1>
-	Blog <button on:click={onGetPosts}>Get Posts</button>
-</h1>
+<script>
+	import Counter from '$lib/Counter.svelte';
+</script>
 
+<svelte:head>
+	<title>Home</title>
+</svelte:head>
 
-<form on:submit|preventDefault={onAddPosts}>
-	<label for="title">Title: 
-		<input type="text" name="title" bind:value={title}/>
-	</label><br>
-	<label for="title">Body: 
-		<textarea type="text" name="body" bind:value={body}/>
-	</label><br>
-	<button>Add</button>
-	<button type="reset">Reset</button>
-</form>
+<section>
+	<h1>
+		<div class="welcome">
+			<picture>
+				<source srcset="svelte-welcome.webp" type="image/webp" />
+				<img src="svelte-welcome.png" alt="Welcome" />
+			</picture>
+		</div>
 
-{#each posts as post, index}
-	<PostCard {...post} {index} on:remove={onRemovePost} bind:body={post.body}/>
+		to your new<br />SvelteKit app
+	</h1>
 
-	<LadnaRamka>{post.body}</LadnaRamka>
-{/each}
+	<h2>
+		try editing <strong>src/routes/index.svelte</strong>
+	</h2>
+
+	<Counter />
+</section>
+
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+	}
+
+	h1 {
+		width: 100%;
+	}
+
+	.welcome {
+		position: relative;
+		width: 100%;
+		height: 0;
+		padding: 0 0 calc(100% * 495 / 2048) 0;
+	}
+
+	.welcome img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		display: block;
+	}
+</style>

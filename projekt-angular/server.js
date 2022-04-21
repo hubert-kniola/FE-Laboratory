@@ -25,47 +25,40 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // set the static files location /public/img will be /img for users
 
-// define model ================================================================
+// define model ============================================================================================
 var Todo = mongoose.model("Todo", {
   text: String,
   done: Boolean,
 });
 
-// routes ======================================================================
+// routes ==================================================================================================
 app.use(cors());
 
-// api ---------------------------------------------------------------------
-// get all todos
+// api ------------------------------------------------------------------------------------------------------
+// GET ALL TODOS
 app.get("/api/todos", function (req, res) {
-  // use mongoose to get all todos in the database
   Todo.find(function (err, todos) {
-    // if there is an error retrieving, send the error. nothing after res.send(err) will execute
     if (err) res.send(err);
-
-    res.json(todos); // return all todos in JSON format
+    res.json(todos);
   });
 });
 
+// GET SELECTED TODO
 app.get("/api/todos/:todo_id", function (req, res) {
-  // use mongoose to get all todos in the database
   Todo.find(
     {
       _id: req.params.todo_id,
     },
     function (err, todos) {
-      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
       if (err) res.send(err);
-      
-      if(todos)
-        res.status(200).json(todos); // return all todos in JSON format
-      else
-        res.status(504)
-    });
+      if (todos) res.status(200).json(todos);
+      else res.status(504);
+    }
+  );
 });
 
-// create todo and send back all todos after creation
+// POST NEW TODO
 app.post("/api/todos", function (req, res) {
-  // create a todo, information comes from AJAX request from Angular
   Todo.create(
     {
       text: req.body.text,
@@ -73,8 +66,6 @@ app.post("/api/todos", function (req, res) {
     },
     function (err, todo) {
       if (err) res.send(err);
-
-      // get and return all the todos after you create another
       Todo.find(function (err, todos) {
         if (err) res.send(err);
         res.json(todos);
@@ -83,8 +74,8 @@ app.post("/api/todos", function (req, res) {
   );
 });
 
-// app.patch("/api/todos", function (req, res) {});
-app.patch("/api/todos/:todo_id", function (req, res) { 
+// PATCH SELECTED TODO
+app.patch("/api/todos/:todo_id", function (req, res) {
   Todo.findByIdAndUpdate(
     req.params.todo_id,
     {
@@ -92,8 +83,6 @@ app.patch("/api/todos/:todo_id", function (req, res) {
     },
     function (err) {
       if (err) res.send(err);
-
-      // get and return all the todos after you update another
       Todo.find(function (err, todos) {
         if (err) res.send(err);
         res.json(todos);
@@ -102,7 +91,7 @@ app.patch("/api/todos/:todo_id", function (req, res) {
   );
 });
 
-// delete a todo
+// DELETE SELECTED TODO
 app.delete("/api/todos/:todo_id", function (req, res) {
   Todo.remove(
     {
@@ -110,8 +99,6 @@ app.delete("/api/todos/:todo_id", function (req, res) {
     },
     function (err, todo) {
       if (err) res.send(err);
-
-      // get and return all the todos after you create another
       Todo.find(function (err, todos) {
         if (err) res.send(err);
         res.json(todos);
@@ -120,25 +107,24 @@ app.delete("/api/todos/:todo_id", function (req, res) {
   );
 });
 
-app.get("/api/done", function (req, res) {
-  // use mongoose to get all todos in the database
+// TODO ------------------------------------------------------------------------------------------------------
+
+// GET ALL TODO
+app.get("/api/todo", function (req, res) {
   Todo.find(
     {
-      done: true,
+      done: false,
     },
     function (err, todos) {
-      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
       if (err) res.send(err);
-
-      if(todos)
-        res.status(200).json(todos); // return all todos in JSON format
-      else
-        res.status(504) // return all todos in JSON format
+      if (todos) res.status(200).json(todos);
+      else res.status(504);
     }
   );
 });
 
-app.patch("/api/todo/:todo_id", function (req, res) { 
+// PATCH SELECTED TODO
+app.patch("/api/todo/:todo_id", function (req, res) {
   Todo.findByIdAndUpdate(
     req.params.todo_id,
     {
@@ -146,47 +132,105 @@ app.patch("/api/todo/:todo_id", function (req, res) {
     },
     function (err) {
       if (err) res.send(err);
-
-      // get and return all the todos after you update another
       Todo.find(
         {
           done: false,
         },
         function (err, todos) {
-          // if there is an error retrieving, send the error. nothing after res.send(err) will execute
           if (err) res.send(err);
-    
-          res.json(todos); // return all todos in JSON format
+          res.json(todos);
         }
       );
     }
   );
 });
 
-app.get("/api/todo", function (req, res) {
-  // use mongoose to get all todos in the database
-  Todo.find(
+// DELETE SELECTED TODO
+app.delete("/api/todo/:todo_id", function (req, res) {
+  Todo.remove(
     {
-      done: false,
+      _id: req.params.todo_id,
     },
-    function (err, todos) {
-      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+    function (err, todo) {
       if (err) res.send(err);
-
-      if(todos)
-        res.status(200).json(todos); // return all todos in JSON format
-      else
-        res.status(504) // return all todos in JSON format
+      Todo.find(
+        {
+          done: false,
+        },
+        function (err, todos) {
+          if (err) res.send(err);
+          res.json(todos);
+        }
+      );
     }
   );
 });
 
-// application -------------------------------------------------------------
+// DONE ------------------------------------------------------------------------------------------------------
+
+// GET ALL DONE
+app.get("/api/done", function (req, res) {
+  Todo.find(
+    {
+      done: true,
+    },
+    function (err, todos) {
+      if (err) res.send(err);
+      if (todos) res.status(200).json(todos);
+      else res.status(504);
+    }
+  );
+});
+
+// PATCH SELECTED TODO
+app.patch("/api/done/:todo_id", function (req, res) {
+  Todo.findByIdAndUpdate(
+    req.params.todo_id,
+    {
+      done: req.body.done,
+    },
+    function (err) {
+      if (err) res.send(err);
+      Todo.find(
+        {
+          done: true,
+        },
+        function (err, todos) {
+          if (err) res.send(err);
+          res.json(todos);
+        }
+      );
+    }
+  );
+});
+
+// DELETE SELECTED TODO
+app.delete("/api/todos/:todo_id", function (req, res) {
+  Todo.remove(
+    {
+      _id: req.params.todo_id,
+    },
+    function (err, todo) {
+      if (err) res.send(err);
+      Todo.find(
+        {
+          done: true,
+        },
+        function (err, todos) {
+          if (err) res.send(err);
+          res.json(todos);
+        }
+      );
+    }
+  );
+});
+
+// application ------------------------------------------------------------------------------------------------------
 app.get("*", function (req, res) {
   res.sendFile("./public/index.html", { root: __dirname });
 });
 
-// listen (start app with node server.js) ======================================
+// listen (start app with node server.js) ==========================================================================
 var server = http.createServer(app);
 server.listen(app.get("port"), function () {
   console.log(
