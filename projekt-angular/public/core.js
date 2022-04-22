@@ -136,4 +136,26 @@ function mainController($scope, $http) {
         console.log("Error: " + data);
       });
   };
+
+  $scope.deleteDone= function (id) {
+    $http
+      .delete("/api/done/" + id)
+      .success(function (data) {
+        $scope.todos = data;
+      })
+      .error(function (data) {
+        console.log("Error: " + data);
+      });
+  };
+
+  $scope.deleteTodo = function (id) {
+    $http
+      .delete("/api/todo/" + id)
+      .success(function (data) {
+        $scope.todos = data;
+      })
+      .error(function (data) {
+        console.log("Error: " + data);
+      });
+  };
 }

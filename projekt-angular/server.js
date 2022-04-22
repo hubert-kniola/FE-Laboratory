@@ -205,7 +205,7 @@ app.patch("/api/done/:todo_id", function (req, res) {
 });
 
 // DELETE SELECTED TODO
-app.delete("/api/todos/:todo_id", function (req, res) {
+app.delete("/api/done/:todo_id", function (req, res) {
   Todo.remove(
     {
       _id: req.params.todo_id,
