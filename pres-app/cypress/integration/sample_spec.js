@@ -1,8 +1,7 @@
-describe('My First Test', () => {
-    it('Visits the Main Site', () => {
-      cy.visit('http://localhost:3000')
+describe("My First Test", () => {
+  it("Visits the Main Site", () => {
+    cy.visit("http://ec2-3-82-245-56.compute-1.amazonaws.com:3000/");
 
-      cy.contains('Hello').click()
-    })
-  })
-  
+    cy.contains("Zaloguj się").click();
+  });
+});

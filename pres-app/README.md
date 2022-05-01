@@ -9,6 +9,7 @@
 ##### To run JEST test
 
 ##### `npm run test`
+##### `npm test App.test.tsx`
 
 ##### Open CYPRESS
 
