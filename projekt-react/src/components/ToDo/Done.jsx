@@ -30,8 +30,8 @@ export const Done = () => {
     const item = dones.filter((_, index) => index === indexToPatch);
     console.log(item);
     axios
-    .patch("/api/todos/" + item[0]._id, { done: !item[0].done })
-    .then((response) => setAllToDos(response.data))
+    .patch("/api/done/" + item[0]._id, { done: !item[0].done })
+    .then((response) => setDones(response.data))
     .catch(() => console.log("catch"));
   };
 
