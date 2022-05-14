@@ -1,50 +1,40 @@
-<script context="module">
-	export const TABS = {};
-</script>
-
 <script>
-	import { setContext, onDestroy } from 'svelte';
-	import { writable } from 'svelte/store';
-
-	const tabs = [];
-	const panels = [];
-	const selectedTab = writable(null);
-	const selectedPanel = writable(null);
-
-	setContext(TABS, {
-		registerTab: tab => {
-			tabs.push(tab);
-			selectedTab.update(current => current || tab);
-			
-			onDestroy(() => {
-				const i = tabs.indexOf(tab);
-				tabs.splice(i, 1);
-				selectedTab.update(current => current === tab ? (tabs[i] || tabs[tabs.length - 1]) : current);
-			});
-		},
-
-		registerPanel: panel => {
-			panels.push(panel);
-			selectedPanel.update(current => current || panel);
-			
-			onDestroy(() => {
-				const i = panels.indexOf(panel);
-				panels.splice(i, 1);
-				selectedPanel.update(current => current === panel ? (panels[i] || panels[panels.length - 1]) : current);
-			});
-		},
-
-		selectTab: tab => {
-			const i = tabs.indexOf(tab);
-			selectedTab.set(tab);
-			selectedPanel.set(panels[i]);
-		},
-
-		selectedTab,
-		selectedPanel
-	});
-</script>
-
-<div class="tabs">
-	<slot></slot>
-</div>
+	import { createEventDispatcher } from 'svelte';
+	let dispatch = createEventDispatcher();
+	
+	export let items;
+	export let activeItem;
+  </script>
+  
+  <div class="tabs">
+	<ul>
+	  {#each items as item}
+		<li on:click={() => dispatch('tabChange', item)}>
+		  <div class:active={item === activeItem}>{ item }</div>
+		</li>
+	  {/each}
+	</ul>
+  </div>
+  
+  <style>
+	.tabs{
+	  margin-bottom: 40px;
+	}
+	ul{
+	  display: flex;
+	  justify-content: center;
+	  padding: 0;
+	  list-style-type: none;
+	}
+	li{
+	  margin: 0 16px;
+	  font-size: 18px;
+	  color: #555;
+	  cursor: pointer;
+	}
+	.active{
+	  color: #d91b42;
+	  border-bottom: 2px solid #d91b42;
+	  padding-bottom: 8px;
+	}
+  </style>
