@@ -1,0 +1,76 @@
+
+ul{
+    list-style-type: none;
+}
+
+.tabs { 
+    height: 60%;
+    width: 75%;
+    background-color: transparent;
+    border: solid 2px rgb(255, 0, 0);
+    border-radius: 12px;
+    padding-bottom: 2rem;
+    box-shadow: rgba(255, 0, 0, 0.3) 0px 19px 38px, rgba(255, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    border: solid 2px rgb(255, 0, 0);
+    border-radius: 12px;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    justify-content: space-around;
+    box-shadow: rgba(255, 0, 0, 0.2) 0px 7px 29px 0px;
+}
+
+.tab-header {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    font-size: 8;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.tab-header:hover{
+    box-shadow: rgba(255, 0, 0, 0.16) 0px 3px 6px, rgba(255, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.tab-content {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: left;
+    align-items: left;
+    width: fit-content;
+}
+
+.active {
+    background-color: red;
+    color: black;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.button--div{
+    flex-direction: row;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: right;
+}
+
+.button--input {
+    padding: 0.2rem;
+    background-color: transparent;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid red;
+    border-radius: 4px;
+    height: 2rem;
+    box-shadow: rgba(255, 0, 0, 0.2) 0px 7px 29px 0px;
+}

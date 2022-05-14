@@ -1,0 +1,26 @@
+.tile {
+  background-color: #202329;
+  width: fit-content;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: rgba(255, 0, 0, 0.3) 0px 1px 2px 0px,
+    rgba(255, 0, 0, 0.15) 0px 2px 6px 2px;
+}
+
+.tile--trash {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.tile--trash:hover {
+    margin-top: auto;
+    margin-bottom: auto;
+    color: black;
+}
+
+.tile--text {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
