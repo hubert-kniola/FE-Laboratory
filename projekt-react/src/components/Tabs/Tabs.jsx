@@ -78,8 +78,10 @@ export const Tabs = ({}) => {
           switch (activeTab) {
             case 1:
               setActiveItems(response.data);
+              break;
             case 2:
               setActiveItems(response.data.filter((item) => item.done === false));
+              break;
             case 3:
               setActiveItems(response.data.filter((item) => item.done === true));
               break;
