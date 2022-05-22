@@ -1,18 +1,20 @@
 // set up ======================================================================
-var http = require("http");
-var express = require("express");
+import { createServer } from "http";
+import express from "express";
 var app = express(); // create our app w/ express
-var mongoose = require("mongoose"); // mongoose for mongodb
-var cors = require("cors");
+import pkg from "mongoose";
+const { connect, model } = pkg; // mongoose for mongodb
+import cors from "cors";
 
-var methodOverride = require("method-override");
-var bodyParser = require("body-parser");
-var path = require("path");
+import methodOverride from "method-override";
+// @ts-ignore
+import { json, urlencoded } from "body-parser";
+import { join } from "path";
 
 var port = 4000;
 
 // configuration ===============================================================
-mongoose.connect(
+connect(
   "mongodb+srv://hubertkniola:angular123@cluster0.kvdmw.mongodb.net/Cluster0?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
@@ -21,12 +23,12 @@ mongoose.connect(
 
 app.set("port", process.env.PORT || port);
 app.use(methodOverride());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public"))); // set the static files location /public/img will be /img for users
+app.use(json());
+app.use(urlencoded({ extended: true }));
+app.use(join(__dirname, "public")); // set the static files location /public/img will be /img for users
 
 // define model ============================================================================================
-var Todo = mongoose.model("Todo", {
+var Todo = model("Todo", {
   text: String,
   done: Boolean,
 });
@@ -231,7 +233,7 @@ app.get("*", function (req, res) {
 });
 
 // listen (start app with node server.js) ==========================================================================
-var server = http.createServer(app);
+var server = createServer(app);
 server.listen(app.get("port"), function () {
   console.log(
     "Express server listening on: http://localhost:" + app.get("port")

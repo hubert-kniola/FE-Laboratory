@@ -4,6 +4,7 @@ function mainController($scope, $http) {
   $scope.formData = {};
   $scope.error = "";
   $scope.todos = [];
+  $scope.activeTab = "";
 
   // when landing on the page, get all todos and show them
   $http
@@ -15,6 +16,23 @@ function mainController($scope, $http) {
       console.log("Error: " + data);
     });
 
+  $scope.changeTab = function (tab) {
+    $scope.activeTab = tab;
+  };
+
+  $scope.getCorrectResponse = function (data) {
+    switch ($scope.activeTab) {
+      case "All":
+        return data;
+      case "Todo":
+        return data.filter((todo) => todo.done === false);
+      case "Done":
+        return data.filter((todo) => todo.done === true);
+      default:
+        break;
+    }
+  };
+
   // when submitting the add form, send the text to the node API
   $scope.createTodos = function () {
     var text = $scope.formData;
@@ -24,7 +42,7 @@ function mainController($scope, $http) {
         .post("/api/todos", $scope.formData)
         .success(function (data) {
           document.getElementById("newTodo").value = "";
-          $scope.todos = data;
+          $scope.todos = getCorrectResponse(data);
         })
         .error(function (data) {
           console.log("Error: " + data);
@@ -137,7 +155,7 @@ function mainController($scope, $http) {
       });
   };
 
-  $scope.deleteDone= function (id) {
+  $scope.deleteDone = function (id) {
     $http
       .delete("/api/done/" + id)
       .success(function (data) {

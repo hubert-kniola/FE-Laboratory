@@ -56,9 +56,9 @@
 
       
       <ul class="nav nav-tabs">
-        <li class="active nav-item" ng-click="getAll()"><a href="#home">ALL</a></li>
-        <li class="nav-item" ng-click="getTodo()"><a href="#menu1">TODO</a></li>
-        <li class="nav-item" ng-click="getDone()"><a href="#menu2">DONE</a></li>
+        <li class="active nav-item" ng-click="getAll(); changeTab('All');"><a href="#home">ALL</a></li>
+        <li class="nav-item" ng-click="getTodo(); changeTab('Todo')"><a href="#menu1">TODO</a></li>
+        <li class="nav-item" ng-click="getDone(); changeTab('Done')"><a href="#menu2">DONE</a></li>
       </ul>
     
       <div class="tab-content">

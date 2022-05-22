@@ -11,7 +11,7 @@ export const Tiles = ({ items, handleClick }) => {
             <div key={index} className="tile">
               <Checkbox checked={todo.done} color="error" onChange={() => handleClick(index, "patch")}/>
               <span className="tile--text">{todo.text}</span>
-              <FaTrash size={22} onClick={() => handleClick(index, "delete")} />
+              <FaTrash className="tile--trash" size={20} onClick={() => handleClick(index, "delete")} />
             </div>
           );
         })

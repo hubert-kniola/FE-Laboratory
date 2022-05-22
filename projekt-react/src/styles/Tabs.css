@@ -58,8 +58,10 @@ ul{
 .button--div{
     flex-direction: row;
     margin-top: 2rem;
-    margin-left: auto;
-    margin-right: right;
+    margin-left: 40%;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .button--input {

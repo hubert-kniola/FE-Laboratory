@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import "../../styles/Tabs.css";
 import { Tiles } from "../ToDo/Tiles";
 
-export const Tabs = ({}) => {
+export const Tabs = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [error, setError] = useState(false);
   const [name, setName] = useState("");
@@ -152,12 +152,15 @@ export const Tabs = ({}) => {
 
       <div className="content">
         <TabContent id={1} activeTab={activeTab}>
+          <h4>All Elements of TODO List:</h4>
           <Tiles items={activeItems} handleClick={handleClickTile} />
         </TabContent>
         <TabContent id={2} activeTab={activeTab}>
+          <h4>Elements to do:</h4>
           <Tiles items={activeItems} handleClick={handleClickTile} />
         </TabContent>
         <TabContent id={3} activeTab={activeTab}>
+          <h4>Elements which are done:</h4>
           <Tiles items={activeItems} handleClick={handleClickTile} />
         </TabContent>
       </div>

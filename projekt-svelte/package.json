@@ -27,7 +27,15 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",
+    "axios": "^0.27.2",
+    "braintapper-svelte-icon": "^0.0.25",
     "cookie": "^0.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "http": "^0.0.1-security",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.3.3",
+    "svelte-icons": "^2.1.0",
     "svelte-navigator": "^3.1.5"
   }
 }
