@@ -38,7 +38,7 @@
   }
   li {
     font-size: 16px;
-    color: #555;
+    color: rgb(160, 160, 160);
     cursor: pointer;
     border: solid 2px #d91b42;
     border-radius: 12px;

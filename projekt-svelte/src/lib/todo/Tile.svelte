@@ -26,7 +26,7 @@
 <style>
   .tile {
     display: flex;
-    padding: 1rem;
+    padding: 0.7rem;
     border: solid 2px #d91b42;
     border-radius: 12px;
     box-shadow: #8a122a 0px 3px 5px -2px, #8a122a 0px 3px 3px -3px;
