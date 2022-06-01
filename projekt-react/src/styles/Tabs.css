@@ -7,6 +7,13 @@ h4{
     font-size:x-large;
 }
 
+.error{
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: large;
+}
+
 .tabs { 
     height: 60%;
     width: 75%;

@@ -5,6 +5,7 @@
   const URL = "http://localhost:4000";
   let data = [];
   let isEmpty = false;
+  let inputField;
   let inputValue = "";
   let title = "All Elements of TODO List:";
 
@@ -66,8 +67,12 @@
         default:
           break;
       }
+      inputField.value = "";
     } else {
       isEmpty = true;
+      setTimeout(function () {
+        isEmpty = false;
+      }, 1000);
     }
   };
 
@@ -142,13 +147,14 @@
         type="text"
         value={inputValue}
         on:input={inputChange}
+        bind:this={inputField}
       />
       <button class="button" on:click={() => handleCreate(activeItem)}
         >CREATE</button
       >
     </div>
     {#if isEmpty}
-      <p>Text is empty!</p>
+      <div class="error">Text is empty!</div>
     {/if}
   </div>
 </main>
@@ -215,6 +221,14 @@
   }
 
   .button:hover {
+    color: white;
+  }
+
+  .error {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: large;
     color: white;
   }
 </style>

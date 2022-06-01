@@ -12,7 +12,7 @@ export const Tabs = () => {
   const [name, setName] = useState("");
   const [activeItems, setActiveItems] = useState([]);
 
-  const errorText = <span>Text is empty!</span>;
+  const errorText = <div class="error">Text is empty!</div>;
 
   const handleChange = (event) => {
     setName(event.target.value);
@@ -90,6 +90,7 @@ export const Tabs = () => {
           }
         })
         .catch(() => console.log("catch"));
+        setName("");
     } else setError(true);
   };
 

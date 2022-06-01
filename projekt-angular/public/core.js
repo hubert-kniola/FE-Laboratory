@@ -4,7 +4,7 @@ function mainController($scope, $http) {
   $scope.formData = {};
   $scope.error = "";
   $scope.todos = [];
-  $scope.activeTab = "";
+  $scope.activeTab = "All";
 
   // when landing on the page, get all todos and show them
   $http
@@ -29,7 +29,7 @@ function mainController($scope, $http) {
       case "Done":
         return data.filter((todo) => todo.done === true);
       default:
-        break;
+        return data;
     }
   };
 
@@ -42,7 +42,13 @@ function mainController($scope, $http) {
         .post("/api/todos", $scope.formData)
         .success(function (data) {
           document.getElementById("newTodo").value = "";
-          $scope.todos = getCorrectResponse(data);
+          if ($scope.activeTab === "All") {
+            $scope.todos = data;
+          } else if ($scope.activeTab === "Todo") {
+            $scope.todos = data.filter((todo) => todo.done === false);
+          } else if ($scope.activeTab === "Done") {
+            $scope.todos = data.filter((todo) => todo.done === true);
+          }
         })
         .error(function (data) {
           console.log("Error: " + data);
